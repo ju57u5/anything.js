@@ -431,6 +431,20 @@
         return obj;
     }
 
+    function getAJoke() {
+    	$.ajax({
+    		url: "http://api.icndb.com/jokes/random/", 
+    		success: function(result){
+        		var json = JSON.stringify(result);
+        		return json["value"]["joke"];
+        	}
+    	}});
+    }
+
+    function makeAJoke() {
+    	alert("Joke: "+getAJoke());
+    }
+
     //prototypes go here
     anything.prototype.doTheThing = doTheThing;
     anything.prototype.flipText = flipText;
@@ -467,6 +481,8 @@
     anything.prototype.sum = sum;
     anything.prototype.product = product;
     anything.prototype.makeDeprecatedArray = makeDeprecatedArray;
+    anything.prototype.getAJoke = getAJoke;
+    anything.prototype.makeAJoke = makeAJoke;
 
     //put that shit where everyone can see it.
     if(typeof(window.Δ) === 'undefined'){
